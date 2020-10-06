@@ -1,0 +1,66 @@
+application:
+  name: Vote API
+  api-version: /v1
+
+spring:
+  application:
+    name: ${application.name}
+  data:
+    rest:
+      basePath: ${application.api-version}
+      default-page-size: 10
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/votedb}
+    username: ${DB_USR:root}
+    password: ${DB_PWD:rootpass}
+
+  jackson:
+    default-property-inclusion: non_empty
+
+  jpa:
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+        use_sql_comments: false
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  main:
+    banner-mode: "CONSOLE"
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+info:
+  app:
+    name: ${application.name}
+    api-version: ${application.api-version}
+
+server:
+  base-uri: ${BASE_URI:localhost:${server.port}}
+  port: ${APP_SERVER_PORT:8080}
+  use-forward-headers: true
+  servlet:
+    context-path: /vote-services/api
+
+  error:
+    whitelabel:
+      enabled: true
+
+external-services:
+  user-info-api:
+    base-url: https://user-info.herokuapp.com
+    operations:
+      validate-user-cpf: /users/{cpf}
