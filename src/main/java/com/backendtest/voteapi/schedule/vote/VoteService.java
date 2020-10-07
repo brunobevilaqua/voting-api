@@ -1,7 +1,6 @@
 package com.backendtest.voteapi.schedule.vote;
 
 import com.backendtest.voteapi.associate.AssociateService;
-import com.backendtest.voteapi.schedule.results.VoteScheduleResultService;
 import com.backendtest.voteapi.schedule.session.VoteSession;
 import com.backendtest.voteapi.schedule.session.VoteSessionService;
 import com.backendtest.voteapi.shared.MessageResolverConfig;
