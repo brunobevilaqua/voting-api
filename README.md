@@ -2,6 +2,11 @@
 
 Micro service responsible for creating Vote Schedule, Vote Session, register Votes and process vote session results.
 
+> The ideal solution would be having the microservice and the worker(responsible for processing vote results) in
+> different applications. This would give better control over resources in order to scale according needs.
+>
+> For versioning i would used semantic versioning 2.0
+
 ## Domain meaning
 - VoteSchedule: "Agenda/Pauta"
 
@@ -77,3 +82,4 @@ can be accessed thru:
 ### Swagger
 can be accessed thru:
 - url: http://localhost:8080/vote-services/api/swagger-ui/
+
